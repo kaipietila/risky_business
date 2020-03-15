@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from core.models.nlp import Entity, Snippet
+
+admin.site.register(Entity)
+admin.site.register(Snippet)
