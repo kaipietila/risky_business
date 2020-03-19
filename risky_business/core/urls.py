@@ -1,9 +1,13 @@
 from django.urls import path
 
-from . import views
+from core import views
 
 urlpatterns = [
     path('', views.health_check),
-    path('risk_entity/', views.RiskEntity.as_view(), name='entity'),
-    path('risk_snippet/<uuid:uuid>/', views.RiskSnippet.as_view(),name='snippet'),
+    path('process_snippet/<uuid:uuid>/',
+        views.ProcessSnippet.as_view(),
+        name='snippet'),
+    path('process_snippet/<uuid:uuid>/results',
+        views.Results.as_view(),
+        name='snippet'),
 ]
