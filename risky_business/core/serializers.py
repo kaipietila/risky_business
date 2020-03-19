@@ -1,12 +1,10 @@
 from rest_framework import serializers
-
-from core.models.nlp import Entity
 from core.models.nlp import Snippet
 
-class SnippetSerializer(serializers.Serializer):
-    text = serializers.CharField()
 
-class EntitySerializer(serializers.Serializer):
-    id = serializers.UUIDField()
-    risk_level = serializers.IntegerField()
-    risk_text = SnippetSerializer()
+class SnippetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Snippet
+        fields = ('code', 'text', 'entity_id', 'risk_level', 'create_time',
+                    'process_time',)
+        read_only_fields = ('code', 'create_time', 'process_time',)

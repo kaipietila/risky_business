@@ -1,8 +1,8 @@
 from core.models.nlp import Snippet
 
-class NlpService(id):
+class NlpService(code):
     def __init__:
-        snipept = Snippet.objects.get(uuid=id)
+        snippet = Snippet.objects.get(code=code)
 
     def process_snippet(self):
         pass
