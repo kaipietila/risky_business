@@ -1,6 +1,6 @@
 import abc
 
-from risky_business.core.models.nlp import Snippet
+from core.models.nlp import Snippet
 
 
 class AbstractNlpService(abc.ABC):
@@ -15,4 +15,6 @@ class AbstractNlpService(abc.ABC):
     def to_bytes(self):
         raise NotImplementedError()
 
-
+    @property
+    def results_set(self):
+        return self.snippet.results_set

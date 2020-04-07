@@ -1,0 +1,238 @@
+[
+    {
+        "rule": "illegal products or services",
+        "keyword": ""
+    },
+    {
+        "rule": "narcotics, steroids, certain controlled substances or other products that present a risk to consumer safety, products including THC, or any activity that relate to drug paraphernalia",
+        "keyword": "drugs, narcotics, steroids, THC, "
+    },
+    {
+        "rule": "electronic cigarettes related products",
+        "keyword": "vape, electronic ciragette"
+    },
+    {
+        "rule": "electronic items and devices",
+        "keyword": ""
+    },
+    {
+        "rule": "items that encourage, promote, facilitate or instruct others to engage in illegal activity",
+        "keyword": ""
+    },
+    {
+        "rule": "stolen goods including digital and virtual goods",
+        "keyword": ""
+    },
+    {
+        "rule": "cyber lookers, sharing and downloading portals",
+        "keyword": ""
+    },
+    {
+        "rule": "items that incites hate, any kind of discrimination, defamatory, bestiality, mutilation, violence, racial intolerance, are likely to harass any other person, or be in the financial exploitation of a crime",
+        "keyword": ""
+    },
+    {
+        "rule": "item related with depiction of sexual acts with persons being under the influence of intoxicating agents, hypnosis or with sleeping persons",
+        "keyword": ""
+    },
+    {
+        "rule": "items that are considered obscene, or sexually oriented materials or services, massage parlours, erotic live streams, erotic dance or comparable services, adult entertainment or pornography, including child pornography, sex clubs, prostitution, magazines, videos or images with pornographic content and sex toys",
+        "keyword": ""
+    },
+    {
+        "rule": "live animals or endangered animal species",
+        "keyword": ""
+    },
+    {
+        "rule": "connected to the selling of on package travel, package holidays and package tours as defined in the Council Directive 90/314/EEC",
+        "keyword": ""
+    },
+    {
+        "rule": "connected to services where the service provider collects money on behalf of others as a payment services provider, cheque encashment agencies, bureaux de change, money transmitters",
+        "keyword": ""
+    },
+   {
+        "rule": "virtual, digital or cryptocurrency activities, sale of vouchers, value cards or valuable usable chips",
+        "keyword": ""
+    },
+    {
+        "rule": "involving ammunition, explosives, arms, defence or weapons, replica weapons, gun parts or related parts or accessories, hunting, manufacture/distribution of weapons",
+        "keyword": ""
+    },
+    {
+        "rule": "the sale of travelers cheques or money orders, airline tickets, bus charters, hospitality timeshares, vacation pools, travel agencies, travel agent services or travel visas",
+        "keyword": ""
+    },
+    {
+        "rule": "promotion or advertising of products or services other than your own without appropriate authorisation",
+        "keyword": ""
+    },
+    {
+        "rule": "gambling, betting activities, casinos, lotteries, sweepstakes, penny auctions, services related to fantasy sports or sports forecasting, or sale of value usable chips or vouchers connected to this services, certain in-purchasing games",
+        "keyword": ""
+    },
+    {
+        "rule": "collecting money without license when compulsory in the account owners jurisdiction",
+        "keyword": ""
+    },
+    {
+        "rule": "multi-level marketing programs, matrix programs, outbound and inbound telemarketing or other similar programs",
+        "keyword": ""
+    },
+    {
+        "rule": "network sales or affiliates",
+        "keyword": ""
+    },
+    {
+        "rule": "programs, materials or services related to get-rich courses or related to increase your wealth or gambling",
+        "keyword": ""
+    },
+    {
+        "rule": "sale or distribution services based on offering telephone or chat services regarded as being of a sexual nature, escort services, adult entertainment or pornography",
+        "keyword": ""
+    },
+    {
+        "rule": "sub-acquiring or merchant aggregation",
+        "keyword": ""
+    },
+    {
+        "rule": "financial or escrow services, guarantees, mortgage",
+        "keyword": ""
+    },
+     {
+        "rule": "accounting, bookkeeping, company formation, private business directory or liquidation services, services related to auditing activities, proxy services, and law services specialized in warning letters",
+        "keyword": ""
+    },
+    {
+        "rule": "factoring, lending, investment services, pawn shops, pyramid and ponzi schemes",
+        "keyword": ""
+    },
+    {
+        "rule": "selling stocks, bonds, securities, options, futures, binary options or an investment interest in any entity or property, services related to raffles, debt consolidation, insurance brokers, payday lenders, medical collections, scholarship programs, payment protection insurance, currency exchange or FOREX activities",
+        "keyword": ""
+    },
+    {
+        "rule": "conveyancing or estate agency services;**",
+        "keyword": ""
+    },
+    {
+        "rule": "dating services",
+        "keyword": ""
+    },
+   {
+        "rule": "spiritual or worship services or products, astrology, fortune telling or palm reading",
+        "keyword": ""
+    },
+    {
+        "rule": "products or services related to the Second World War",
+        "keyword": ""
+    },
+     {
+        "rule": "jewels, precious metals and stones, wholesale of scrap metal, unregistered waste management businesses",
+        "keyword": ""
+    },
+    {
+        "rule": "sale of motor vehicles, auto parts, car accessories or auto services",
+        "keyword": ""
+    },
+    {
+        "rule": "bath salts, herbal products or potpourri blends",
+        "keyword": ""
+    },
+    {
+        "rule": "modification chips",
+        "keyword": ""
+    },
+    {
+        "rule": "payments to or from accounts in OFAC listed sanctioned countries",
+        "keyword": ""
+    },
+     {
+        "rule": "ticket agencies without a license, ticket resale",
+        "keyword": ""
+    },
+    {
+        "rule": "Prepaid phone cards",
+        "keyword": ""
+    },
+    {
+        "rule": "nail bar services",
+        "keyword": ""
+    },
+    {
+        "rule": "parking garages, storage warehouse services or any storage facilities",
+        "keyword": ""
+    },
+     {
+        "rule": "launderettes",
+        "keyword": ""
+    },
+    {
+        "rule": "replica clothes and products, or counterfeit goods",
+        "keyword": ""
+    },
+    {
+        "rule": "objectionable, offensive, indecent, harassing, threatening, embarrassing, distressing, vulgar, hateful, racially, ethnically or sexually offensive, or otherwise inappropriate behaviour towards the Holvi Payment Services Oy personnel",
+        "keyword": ""
+    },
+    {
+        "rule": "Surrogacy, and any other pregnancy or fertility related services/activities",
+        "keyword": ""
+    },
+    {
+        "rule": "Dropshipping and distribution companies ",
+        "keyword": ""
+    },
+    {
+        "rule": "Highly rated politically exposed persons (PEP)",
+        "keyword": ""
+    },
+     {
+        "rule": "Businesses or businesses with persons suspected or convicted of terrorism and related offences",
+        "keyword": ""
+    },
+    {
+        "rule": "Business or businesses with persons subject to international/national sanctions",
+        "keyword": ""
+    },
+    {
+        "rule": "Providing false information relating to the customers identity or business activities",
+        "keyword": ""
+    },
+     {
+        "rule": "Businesses or businesses with persons associated with it that are suspected or convicted of financial crime or any other offence or action that carry a reputational risk",
+        "keyword": ""
+    },
+    {
+        "rule": "Journalism & newsgroups with offensive or content that involves or is distributed in hateful communities",
+        "keyword": ""
+    },
+    {
+        "rule": "church-like organizations or religious groups",
+        "keyword": ""
+    },
+    {
+        "rule": "charitable societies",
+        "keyword": ""
+    },
+    {
+        "rule": "night clubs, entertainment, selling of alcohol",
+        "keyword": ""
+    },
+    {
+        "rule": "political associations*",
+        "keyword": ""
+    },
+    {
+        "rule": "online pharmacy, healthcare, weight loss products, nutraceuticals",
+        "keyword": ""
+    },
+     {
+        "rule": "collecting money with or without a license",
+        "keyword": ""
+    },
+    {
+        "rule": "estate agency services",
+        "keyword": ""
+    }
+]

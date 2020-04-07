@@ -5,3 +5,5 @@ vscode/
 .vscode/settings.json
 *.pyc
 *.idea
+*.sqlite3
+/risky_business/db.sqlite3
