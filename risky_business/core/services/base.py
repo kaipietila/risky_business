@@ -1,14 +1,12 @@
 import abc
 
-from core.models.nlp import Snippet
-
 
 class AbstractNlpService(abc.ABC):
     def __init__(self, snippet):
-        self.snippet = Snippet.objects.get(code=snippet)
+        self.snippet = snippet
 
     @abc.abstractmethod
-    def process_snippet(self):
+    def process(self):
         raise NotImplementedError()
 
     @abc.abstractmethod

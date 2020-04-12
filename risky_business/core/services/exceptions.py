@@ -1,0 +1,3 @@
+
+class UnknownWordsError(Exception):
+    pass

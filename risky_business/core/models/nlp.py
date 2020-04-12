@@ -1,5 +1,8 @@
 from django.db import models
+from django.contrib.postgres.fields import JSONField
 import uuid
+
+from core.services import get_nlp_service
 
 
 class Snippet(models.Model):
@@ -13,6 +16,15 @@ class Snippet(models.Model):
     entity_id = models.CharField(max_length=255, blank=True)
     risk_level = models.IntegerField(null=True)
     create_time = models.DateTimeField(auto_now_add=True)
+    domicile = models.CharField(max_length=2)
+
+    def __str__(self):
+        return f'{self.code}'
+
+    @property
+    def nlp_service(self):
+        service = get_nlp_service(self)
+        return service(self)
 
 
 class SnippetResults(models.Model):
@@ -25,7 +37,10 @@ class SnippetResults(models.Model):
     binary_results = models.BinaryField(null=True)
     is_against_aup = models.BooleanField()
     assessed_risk_level = models.IntegerField(null=True)
-    report = models.TextField(blank=True)
+    report = JSONField()
+
+    def __str__(self):
+        return f'results for {self.snippet}'
 
 
 class AcceptableUsePolicyRule(models.Model):
@@ -34,6 +49,9 @@ class AcceptableUsePolicyRule(models.Model):
     """
     id = models.IntegerField(primary_key=True)
     create_time = models.DateTimeField(auto_now_add=True)
-    full_rule = models.CharField(max_length=255)
+    full_rule = models.CharField(max_length=512)
     # Keywords in a textfield, separated by commas.
     keywords = models.TextField()
+
+    def __str__(self):
+        return f'{self.id}'
