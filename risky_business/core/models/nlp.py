@@ -41,17 +41,3 @@ class SnippetResults(models.Model):
 
     def __str__(self):
         return f'results for {self.snippet}'
-
-
-class AcceptableUsePolicyRule(models.Model):
-    """
-    AUP rules modelled to the DB for easy config etc.
-    """
-    id = models.IntegerField(primary_key=True)
-    create_time = models.DateTimeField(auto_now_add=True)
-    full_rule = models.CharField(max_length=512)
-    # Keywords in a textfield, separated by commas.
-    keywords = models.TextField()
-
-    def __str__(self):
-        return f'{self.id}'

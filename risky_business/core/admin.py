@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from core.models.nlp import Snippet
-from core.models.nlp import SnippetResults
-from core.models.nlp import AcceptableUsePolicyRule
+from core.models import nlp
+from core.models import aup
 
-admin.site.register(Snippet)
-admin.site.register(SnippetResults)
-admin.site.register(AcceptableUsePolicyRule)
+admin.site.register(nlp.Snippet)
+admin.site.register(nlp.SnippetResults)
+admin.site.register(aup.AcceptableUsePolicyRule)
+admin.site.register(aup.Keyword)
