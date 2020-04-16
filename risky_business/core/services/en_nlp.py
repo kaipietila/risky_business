@@ -4,6 +4,7 @@ from django.utils import timezone
 
 from core.services.base import AbstractNlpService
 from core.models.aup import Keyword
+from core.models.aup import Phrase
 
 
 class EnglishNLPService(AbstractNlpService):
@@ -22,7 +23,6 @@ class EnglishNLPService(AbstractNlpService):
         Gather data and collect to report and save results
         """
         self.get_nlp_data()
-        self.get_ents()
         self.check_against_aup()
         self.add_process_time()
         self.save_results()
@@ -37,17 +37,23 @@ class EnglishNLPService(AbstractNlpService):
 
     def check_against_aup(self):
         """
-        Get all keywords and check against them and map which AUP
-        rules get hit, by checking against the lemmatized forms of words
-        and add them to report
+        Check all lemmas and noun chunks against keywords and phrases.
+        Map which AUP rules get hit.
         """
-        keywords = Keyword.objects.all()
         hits = {}
         lemmas = self.report['data']['lemmas']
-        for keyword in keywords:
-            if keyword.keyword in lemmas:
-                hits[keyword.keyword] = [aup_rule.full_rule for aup_rule in
-                                         keyword.aup_rule.all()]
+        noun_chunks = self.report['data']['noun_chunks']
+
+        hit_keywords = Keyword.objects.filter(keyword__in=lemmas)
+        for hit in hit_keywords:
+            hits[hit.keyword] = [aup_rule.full_rule for aup_rule in
+                                     hit.aup_rule.all()]
+
+        hit_phrases = Phrase.objects.filter(phrase__in=noun_chunks)
+        for hit in hit_phrases:
+            hits[hit.phrase] = [aup_rule.full_rule for aup_rule in
+                                     hit.aup_rule.all()]
+
         if hits:
             self.is_against_aup = True
         self.report['hits'] = hits
@@ -55,19 +61,20 @@ class EnglishNLPService(AbstractNlpService):
     def assess_risk_level(self):
         pass
 
-    def create_report(self):
-        pass
-
     def get_nlp_data(self):
-        lemmas = self.get_lemmas()
-        is_real_sentence = self.check_if_real_sent(lemmas=lemmas)
+        lemmas = self.get_lemmatized_words()
+        is_real_sentence = self.check_if_real_sentence(lemmas=lemmas)
+        noun_chunks = self.get_noun_chunks()
+        ents = self.get_entities()
         data = {
             'lemmas': lemmas,
             'is_real_sentence': is_real_sentence,
+            'ents': ents,
+            'noun_chunks': noun_chunks
         }
         self.report['data'] = data
 
-    def check_if_real_sent(self, lemmas):
+    def check_if_real_sentence(self, lemmas):
         """
         Checks is sentence does not contain anything else than stopwords,
         numbers or punctuation. If no lemmas is found still checks spacy
@@ -77,22 +84,22 @@ class EnglishNLPService(AbstractNlpService):
         if len(lemmas):
             is_real_sentence = True
 
-        if not is_real_sentence and len(self.doc.sents) <= 1:
+        if not is_real_sentence and not self.doc.sents:
             is_real_sentence = True
 
         return is_real_sentence
 
-    def get_lemmas(self):
+    def get_lemmatized_words(self):
         """
         get POS token data for all non stopwords and punctuation
         """
         lemmas = []
         for word in self.doc:
-            if not word.is_stop and word.pos_ != 'PUNCT' and not word.like_num:
+            if not word.is_stop and not word.is_punct and not word.like_num:
                 lemmas.append(word.lemma_)
         return lemmas
 
-    def get_ents(self):
+    def get_entities(self):
         """
         Get all found entities
         """
@@ -100,7 +107,17 @@ class EnglishNLPService(AbstractNlpService):
         for ent in self.doc.ents:
             ents[ent.text] = ent.label_
 
-        self.report['ents'] = ents
+        return ents
+
+    def get_noun_chunks(self):
+        """
+        Get all found noun chunks
+        """
+        noun_chunks = []
+        for chunk in self.doc.noun_chunks:
+            noun_chunks.append(chunk.text)
+
+        return noun_chunks
 
     def save_results(self):
         results = self.snippet.results_set.create(

@@ -5,7 +5,6 @@ from django.http import JsonResponse
 
 from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework.response import Response
 
 from core.models.nlp import Snippet
 from core.serializers import SnippetSerializer
@@ -17,7 +16,8 @@ def health_check(request):
 
 class ProcessSnippet(APIView):
 
-    def get(self, request, uuid):
+    def get(self, request):
+        uuid = request.data['code']
         try:
             snippet = Snippet.objects.get(code=uuid)
         except Snippet.DoesNotExist:
