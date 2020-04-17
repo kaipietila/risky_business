@@ -1,4 +1,12 @@
 from django.db import models
+from core.constants import AUPDecisionChoices
+
+
+def _get_choices(choices):
+    return (
+        (choice.value, choice.name)
+        for choice in choices
+    )
 
 
 class AcceptableUsePolicyRule(models.Model):
@@ -8,6 +16,10 @@ class AcceptableUsePolicyRule(models.Model):
     id = models.IntegerField(primary_key=True)
     create_time = models.DateTimeField(auto_now_add=True)
     full_rule = models.CharField(max_length=512)
+    hit_message = models.CharField(max_length=255, blank=True)
+    decision = models.CharField(max_length=128,
+                                choices=_get_choices(AUPDecisionChoices),
+                                null=True)
 
     def __str__(self):
         return f'{self.full_rule}'

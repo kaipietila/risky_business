@@ -49,10 +49,19 @@ class EnglishNLPService(AbstractNlpService):
             hits[hit.keyword] = [aup_rule.full_rule for aup_rule in
                                      hit.aup_rule.all()]
 
-        hit_phrases = Phrase.objects.filter(phrase__in=noun_chunks)
-        for hit in hit_phrases:
-            hits[hit.phrase] = [aup_rule.full_rule for aup_rule in
-                                     hit.aup_rule.all()]
+        phrases = Phrase.objects.all()
+        for phrase in phrases:
+            for chunk in noun_chunks:
+                if phrase.phrase in chunk:
+                    hits[phrase.phrase] = [
+                    {
+                        'aup': aup_rule.full_rule,
+                        'message': aup_rule.hit_message,
+                        'decision': aup_rule.decision,
+                     }
+                    for aup_rule in
+                         phrase.aup_rule.all()
+                ]
 
         if hits:
             self.is_against_aup = True
@@ -115,7 +124,7 @@ class EnglishNLPService(AbstractNlpService):
         """
         noun_chunks = []
         for chunk in self.doc.noun_chunks:
-            noun_chunks.append(chunk.text)
+            noun_chunks.append(chunk.text.lower())
 
         return noun_chunks
 
