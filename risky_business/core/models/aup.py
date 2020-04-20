@@ -1,6 +1,5 @@
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.contrib.postgres.fields import JSONField
 
 from core.constants import AUPDecisionChoices
 
@@ -53,6 +52,7 @@ class Phrase(models.Model):
                                  related_name='phrases')
     risk_weight = models.IntegerField(null=True)
     language = models.CharField(max_length=2)
+    pattern = JSONField(null=True)
 
     def __str__(self):
         return self.phrase
