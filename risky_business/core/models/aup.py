@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.postgres.fields import JSONField
 
 from core.constants import AUPDecisionChoices
+from core.constants import LanguageChoices
 
 
 def _get_choices(choices):
@@ -36,7 +37,8 @@ class Keyword(models.Model):
     aup_rule = models.ManyToManyField(AcceptableUsePolicyRule,
                                  related_name='keywords')
     risk_weight = models.IntegerField(null=True)
-    language = models.CharField(max_length=2)
+    language = models.CharField(max_length=2,
+                                choices=_get_choices(LanguageChoices))
 
     def __str__(self):
         return self.keyword
@@ -51,7 +53,8 @@ class Phrase(models.Model):
     aup_rule = models.ManyToManyField(AcceptableUsePolicyRule,
                                  related_name='phrases')
     risk_weight = models.IntegerField(null=True)
-    language = models.CharField(max_length=2)
+    language = models.CharField(max_length=2,
+                                choices=_get_choices(LanguageChoices))
     pattern = JSONField(null=True)
 
     def __str__(self):

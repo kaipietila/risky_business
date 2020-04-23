@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
 
+from core.forms import PhraseForm
 from core.models import nlp
 from core.models import aup
 
@@ -30,8 +31,25 @@ class SnippetAdmin(admin.ModelAdmin):
             return format_html('<a href="{}">{}</a>', url, result.id)
 
 
+class PhraseAdmin(admin.ModelAdmin):
+    list_display = ['phrase', 'risk_weight', 'language', 'pattern',
+                    'aup']
+    search_fields = ['phrase']
+    list_filter = ['language']
+    form = PhraseForm
+
+    def aup(self, obj):
+        aups = obj.aup_rule.all()
+        urls = [(reverse('admin:core_acceptableusepolicyrule_change',
+                         args=[aup.id]), aup.id) for aup in aups]
+        html = ''
+        for url, aup_id in urls:
+            html += '<a href="{}">{}</a>, '.format(url, aup_id)
+        return format_html(html)
+
+
 admin.site.register(nlp.Snippet, SnippetAdmin)
 admin.site.register(nlp.SnippetResults, SnippetResultsAdmin)
 admin.site.register(aup.AcceptableUsePolicyRule)
 admin.site.register(aup.Keyword)
-admin.site.register(aup.Phrase)
+admin.site.register(aup.Phrase, PhraseAdmin)

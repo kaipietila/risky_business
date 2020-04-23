@@ -1,10 +1,11 @@
 from django.urls import path
 
-from core import views
+from core.views.api import ProcessSnippet
+from core.views.api import health_check
 
 urlpatterns = [
-    path('health_check', views.health_check),
+    path('health_check', health_check),
     path('process_snippet/',
-        views.ProcessSnippet.as_view(),
+        ProcessSnippet.as_view(),
         name='snippet'),
 ]
